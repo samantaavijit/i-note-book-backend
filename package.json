@@ -4,7 +4,8 @@
   "description": "I Note Book backend app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/samantaavijit/i-note-book-backend/issues"
   },
-  "homepage": "https://github.com/samantaavijit/i-note-book-backend#readme"
+  "homepage": "https://github.com/samantaavijit/i-note-book-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
 }
