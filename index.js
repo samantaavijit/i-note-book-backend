@@ -2,7 +2,7 @@ const connectToMongo = require("./config/db");
 const express = require('express')
 
 const app = express()
-const port = 3050
+const port = 5000
 
 connectToMongo();
 

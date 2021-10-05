@@ -13,23 +13,34 @@ router.post(
       min: 6,
     }),
   ],
-  (req, res) => {
+  async (req, res) => {
+    // If there are an errors, return Bad request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-    })
-      .then((user) => res.status(201).json(user))
-      .catch((err) => {
-        res.status(409).json({
-          error: `${err.keyValue.email} already exist!`,
-          message: `Duplicate key error, email id must be unique`,
+
+    try {
+      // check whether the user already exists or not
+      let user = await User.findOne({ email: req.body.email });
+
+      if (user) {
+        return res.status(400).json({
+          message: `Duplicate key error, email id already exist!`,
         });
+      }
+      // Create new user
+      user = await User.create({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
       });
+
+      res.status(201).json(user);
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).send("Some error occured");
+    }
   }
 );
 
