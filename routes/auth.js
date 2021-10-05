@@ -3,6 +3,9 @@ const router = express.Router();
 const User = require("../models/User");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+const JWT_SECRET = "ThisIsi-note-backend-s@manta";
 
 // Create a user using: POST "/api/auth/createuser". Doesn't require Auth
 router.post(
@@ -30,6 +33,7 @@ router.post(
           message: `Duplicate key error, email id already exist!`,
         });
       }
+      // create hasing
       const solt = await bcrypt.genSalt(10);
       const secPassword = await bcrypt.hash(req.body.password, solt);
       // Create new user
@@ -39,7 +43,15 @@ router.post(
         password: secPassword,
       });
 
-      res.status(201).json(user);
+      // create jwt token
+      const data = {
+        user: {
+          id: user.id,
+        },
+      };
+      const authToken = jwt.sign(data, JWT_SECRET);
+
+      res.status(201).json({ token: authToken });
     } catch (error) {
       console.log(error.message);
       res.status(500).send("Some error occured");
