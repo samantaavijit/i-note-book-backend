@@ -8,7 +8,7 @@ const fetchuser = require("../middleware/fetchuser");
 
 const JWT_SECRET = "ThisIsi-note-backend-s@manta";
 
-// ROUTE 1: Create a user using: POST "/api/auth/createuser". Doesn't require Auth
+// ROUTE 1: Create a user using: POST "/api/auth/createuser". Doesn't required Auth
 router.post(
   "/createuser",
   [
@@ -54,7 +54,7 @@ router.post(
   }
 );
 
-// ROUTE 2: Authenticate a user using: POST "/api/auth/login". Doesn't require Auth
+// ROUTE 2: Authenticate a user using: POST "/api/auth/login". Doesn't required Auth
 router.post(
   "/login",
   [
@@ -98,7 +98,7 @@ router.post(
   }
 );
 
-// ROUTE 3: Get loggedin User Details using: GET "/api/auth/getuser". Login require
+// ROUTE 3: Get loggedin User Details using: GET "/api/auth/getuser". Login required
 router.get("/getuser", fetchuser, async (req, res) => {
   try {
     const userId = req.user.id;
