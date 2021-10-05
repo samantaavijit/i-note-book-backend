@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const { body, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
 
 // Create a user using: POST "/api/auth/createuser". Doesn't require Auth
 router.post(
@@ -29,11 +30,13 @@ router.post(
           message: `Duplicate key error, email id already exist!`,
         });
       }
+      const solt = await bcrypt.genSalt(10);
+      const secPassword = await bcrypt.hash(req.body.password, solt);
       // Create new user
       user = await User.create({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password,
+        password: secPassword,
       });
 
       res.status(201).json(user);
