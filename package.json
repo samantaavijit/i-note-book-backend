@@ -20,6 +20,7 @@
   "homepage": "https://github.com/samantaavijit/i-note-book-backend#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-validator": "^6.12.2",
     "mongoose": "^6.0.8"
   },
   "devDependencies": {
