@@ -1,7 +1,9 @@
 const connectToMongo = require("./config/db");
 const express = require("express");
+var cors = require('cors')
 
 const app = express();
+app.use(cors())
 const port = 5000;
 
 connectToMongo();
@@ -17,5 +19,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`iNoteBook app listening at http://localhost:${port}`);
 });

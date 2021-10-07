@@ -90,7 +90,7 @@ router.post(
         },
       };
       const authToken = jwt.sign(data, JWT_SECRET);
-      res.status(201).json({ token: authToken });
+      res.status(201).json({  authToken });
     } catch (error) {
       console.log(error.message);
       res.status(500).send("Internal Server Error");
