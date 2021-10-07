@@ -22,7 +22,7 @@ router.post(
     // If there are an errors, return Bad request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ error: errors.array() });
     }
 
     try {
@@ -31,7 +31,7 @@ router.post(
 
       if (user) {
         return res.status(400).json({
-          message: `Duplicate key error, email id already exist!`,
+          error: `Duplicate key error, email id already exist!`,
         });
       }
       // create hasing
