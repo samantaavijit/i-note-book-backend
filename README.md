@@ -45,4 +45,4 @@ I Note Book backend app
 ### `db.<<collections_name>>.insertMany([{'name':'Avijit Samanta','age':'22','lang':'NodeJS'},{'name':'Antik Mondal','age':'23','lang':'JavaScript'},{'name':'Nirmal Pari','age':'23','lang':'JAVA'}])`
 ### View all rows
 
-### `db.<<collections_name>>.find()` <br/> `OR` <br/> `db.<<collections_name>>.find().pretty()`
+### `db.<<collections_name>>.find()` <br/> OR <br/> `db.<<collections_name>>.find().pretty()`
