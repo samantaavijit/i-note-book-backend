@@ -1,4 +1,4 @@
 # i-note-book-backend
 I Note Book backend app
-## Show databases
-### show dbs;
+## View all databases
+### `show dbs;`
