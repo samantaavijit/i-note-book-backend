@@ -38,11 +38,36 @@ I Note Book backend app
 
 ### Insert one row
 
-### `db.<<collections_name>>.insert({'name':'Avijit Samanta','age':'22','lang':'NodeJS'})`
+### `db.<<collections_name>>.insert({'<<key>>':'<<value>>','<<key>>':'<<value>>','<<key>>':'<<value>>'})`
 
 ### Insert multiple rows
 
-### `db.<<collections_name>>.insertMany([{'name':'Avijit Samanta','age':'22','lang':'NodeJS'},{'name':'Antik Mondal','age':'23','lang':'JavaScript'},{'name':'Nirmal Pari','age':'23','lang':'JAVA'}])`
+### `db.<<collections_name>>.insertMany([{'<<key>>':'<<value>>','<<key>>':'<<value>>','<<key>>':'<<value>>'},{'<<key>>':'<<value>>','<<key>>':'<<value>>','<<key>>':'<<value>>'},{'<<key>>':'<<value>>','<<key>>':'<<value>>','<<key>>':'<<value>>'}])`
+
 ### View all rows
 
 ### `db.<<collections_name>>.find()` <br/> OR <br/> `db.<<collections_name>>.find().pretty()`
+
+### View first row
+
+### `db.<<collections_name>>.findOne().pretty()`
+
+### Search in a MongoDb Database
+
+### `db.<<collections_name>>.find({<<key>>:'<<value>>'}).pretty()`
+
+### Limit the number of rows in output
+
+### `db.<<collections_name>>.find().pretty().limit(<<limit number>>)`
+
+### View total number of results
+
+### `db.<<collections_name>>.find().pretty().count()`
+
+### Sort the documents
+
+### `db.<<collections_name>>.find().sort({<<key>>:1 for ASC / -1 for DESC}).pretty()`
+
+### Update a row
+
+### `db.<<collections_name>>.update({<<key>>:<<value>>}for search query,{'<<key>>':'<<value>>','<<key>>':'<<value>>','<<key>>':'<<value>>'}for update value)`
