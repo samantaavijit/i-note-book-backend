@@ -5,9 +5,9 @@ const fetchuser = require("../middleware/fetchuser");
 const { body, validationResult } = require("express-validator");
 
 // ROUTE 1: Get All the Notes using: GET "/api/notes/fetchallnotes". Login required
-router.get("/fetchallnotes", fetchuser, async (req, res) => {
+router.get("/fetchallnotes", async (req, res) => {
   try {
-    const notes = await Note.find({ user: req.user.id });
+    const notes = await Note.find();
     res.json(notes);
   } catch (error) {
     console.log(error.message);
@@ -18,7 +18,6 @@ router.get("/fetchallnotes", fetchuser, async (req, res) => {
 // ROUTE 2: Add a new Note using: POST "/api/notes/addnote". Login required
 router.post(
   "/addnote",
-  fetchuser,
   [
     body("title", "Title must be atleast 3 characters").isLength({ min: 3 }),
     body("description", "Description must be atleast 5 characters").isLength({
@@ -33,7 +32,7 @@ router.post(
     }
     try {
       const { title, description, tag } = req.body;
-      const note = new Note({ title, description, tag, user: req.user.id });
+      const note = new Note({ title, description, tag });
       const saveNote = await note.save();
       res.json(saveNote);
     } catch (error) {
